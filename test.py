@@ -63,6 +63,10 @@ import json
 def auto_extract_random():
     # JSONファイルのパス
     file_path = "items.json"
+    japanesetoenglishflg = False
+    user_unput = input("日本語→英語の場合はyを押す")
+    if user_unput == "y":
+        japanesetoenglishflg = True
     # JSONファイルを読み込む
     with open(file_path, "r", encoding="utf-8") as file:
         data = json.load(file)
@@ -80,6 +84,13 @@ def auto_extract_random():
         # ランダムに要素を選択
         random_key, random_value = random.choice(list(dictionary_300.items()))
         print("抽出が完了しました。エンターキーを押して結果を表示します。")
+        # 日本語
+        if japanesetoenglishflg:
+            print(f"{random_value}: はなに")
+            input()  # エンターキーを待機
+            print(f"選択された要素: {random_value}: {random_key}")
+            del dictionary_300[random_key]
+            continue
         print(f"{random_key}: はなに")
         input()  # エンターキーを待機
         print(f"選択された要素: {random_key}: {random_value}")

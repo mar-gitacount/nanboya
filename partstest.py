@@ -101,7 +101,7 @@ def extract_amount_or_text(text):
 
 # !エクセルデータ設定
 # エクセルのヘッダ－データ
-data = ["製品名", "リファレンスNO", "最高価格", "最安価格", "ブレスレット", "その他"]
+data = ["モデル名", "リファレンスNO", "最高価格", "最安価格", "ブレスレット", "その他"]
 # ファイル名に日付を組み込む
 # 現在の日付を取得
 today_date = datetime.now().strftime("%Y%m%d")
@@ -111,7 +111,9 @@ if not os.path.exists(file_name):
     wb = Workbook()
     ws = wb.active
     # ヘッダー行を追加
-    ws.append(["種類", "リファレンスNO", "製品名", "サイズ", "未使用品", "中古品"])
+    ws.append(
+        ["モデル名", "リファレンスNO", "ブレス・文字盤", "サイズ", "未使用品", "中古品"]
+    )
 else:
     # ファイルが存在する場合は既存のファイルを読み込み
     wb = load_workbook(file_name)
